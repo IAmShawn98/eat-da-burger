@@ -1,1 +1,104 @@
-{{!-- * Setup the `main.handlebars` file so it's able to be used by Handlebars. --}}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    {{!-- Font Awesome CDN --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {{!-- Document Title --}}
+    <title>Eat-Da-Burger!</title>
+</head>
+
+<body>
+    {{!-- Site Container --}}
+    <div class="container">
+        {{!-- Site Jumbotron (Select A Burger) --}}
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container text-center">
+                {{!-- Site Jumbotron (Header + Description) --}}
+                <h1 class="display-3">Eat-Da-Burger!</h1>
+                <p class="lead">Freshly Made Burgers of Your Choosing!</p>
+            </div>
+            {{!-- Site Card 'Type-A-Burger' --}}
+            <div class="container w-50">
+                <div class="card">
+                    {{!-- Site Card Head --}}
+                    <div class="card-header text-center">
+                        <strong class="text-primary">Type-A-Burger</strong>
+                    </div>
+                    {{!-- Site Card Body --}}
+                    <div class="card-body">
+                        <div class="input-group flex-nowrap">
+                            {{!-- Site Input FA --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-cutlery text-primary" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            {{!-- Site Main Input --}}
+                            <input list="options" class="form-control" placeholder="Bacon Cheese Burger" type="text">
+
+                            {{!-- Site Main Input Recommended Burgers --}}
+                            <datalist id="options">
+                                <option value="Bacon Cheese Burger">
+                                <option value="Plain Cheese Burger">
+                                <option value="Double Beef Burger">
+                                <option value="Plain Veggie Burger">
+                            </datalist>
+                        </div>
+                    </div>
+                    {{!-- Site Input Submit --}}
+                    <div class="container offset-4 p-2">
+                        <button class="btn btn-info" style="font-size: 150%;">Place An Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{!-- Site Burder Order & Devour Tables --}}
+        <div class="container">
+            {{!-- Site Burger Container --}}
+            <div class="row">
+                {{!-- Order Table --}}
+                <div class="col-md-6">
+                    <div class="card">
+                        <h5 class="card-header">Current Burger Orders</h5>
+                        <div class="card-body">
+                            <p class="lead">Burger Orders Appear Here.</p>
+                        </div>
+                    </div>
+                </div>
+                {{!-- Devour Table --}}
+                <div class="col-md-6">
+                    <div class="card">
+                        <h5 class="card-header">Eat-Dem-Burgers</h5>
+                        <div class="card-body">
+                            <p class="lead">This is the dining table.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- jQuery --}}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        {{!-- Popper JS --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        {{!-- Bootstrap JS --}}
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>
