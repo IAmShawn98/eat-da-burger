@@ -36,69 +36,101 @@
                     </div>
                     {{!-- Site Card Body --}}
                     <div class="card-body">
-                        <div class="input-group flex-nowrap">
-                            {{!-- Site Input FA --}}
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fa fa-cutlery text-primary" aria-hidden="true"></i>
-                                </span>
+                        <form class="create-form">
+                            <div class="input-group flex-nowrap">
+                                {{!-- Site Input FA --}}
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-cutlery text-primary" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                {{!-- Site Main Input --}}
+                                <input list="options" class="form-control" placeholder="Bacon Cheese Burger"
+                                    type="text">
+
+                                {{!-- Site Main Input Recommended Burgers --}}
+                                <datalist id="options">
+                                    <option value="Bacon Cheese Burger">
+                                    <option value="Plain Cheese Burger">
+                                    <option value="Double Beef Burger">
+                                    <option value="Plain Veggie Burger">
+                                </datalist>
                             </div>
-                            {{!-- Site Main Input --}}
-                            <input list="options" class="form-control" placeholder="Bacon Cheese Burger" type="text">
-
-                            {{!-- Site Main Input Recommended Burgers --}}
-                            <datalist id="options">
-                                <option value="Bacon Cheese Burger">
-                                <option value="Plain Cheese Burger">
-                                <option value="Double Beef Burger">
-                                <option value="Plain Veggie Burger">
-                            </datalist>
-                        </div>
                     </div>
-                    {{!-- Site Input Submit --}}
-                    <div class="container offset-4 p-2">
-                        <button class="btn btn-info" style="font-size: 150%;">Place An Order</button>
+                </div>
+                {{!-- Site Input Submit --}}
+                <div class="container offset-4 p-2">
+                    <button class="btn btn-info" id="addBurger" style="font-size: 150%;">Place An Order</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{!-- Site Burder Order & Devour Tables --}}
+    <div class="container">
+        {{!-- Site Burger Container --}}
+        <div class="row">
+            {{!-- Site Order Table --}}
+            <div class="col-md-6">
+                <div class="card">
+                    {{!-- Site Burger Table --}}
+                    <h5 class="card-header">Current Burger Orders</h5>
+                    <div class="card-body">
+                        <ol>
+                            {{!-- For Each Burger Not Devoured, display here --}}
+                            {{#each burgers}}
+                            {{#unless devoured}}
+                            <li class="mt-2">
+                                {{this.burger_name}}
+                                <button class="btn btn-success btn-sm p-1" id="btnPurchase" data-id="{{this.id}}"
+                                    data-newPurchased="{{purchase}}">
+                                    Purchase
+                                </button>
+                            </li>
+                            {{/unless}}
+                            {{/each}}
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            {{!-- Site Devour Table --}}
+            <div class="col-md-6">
+                <div class="card">
+                    <h5 class="card-header">Eat-Dem-Burgers</h5>
+                    <div class="card-body">
+                        {{!-- For Each burger devoured, display here --}}
+                        <ol>
+                            {{#each burgers}}
+                            {{#if devoured}}
+                            <li class="mt-2">
+                                {{this.burger_name}}
+                                <button class="btn btn-warning btn-sm p-1" id="btnPurcahse" data-id="{{this.id}}"
+                                    data-newDevoured="{{devour}}">
+                                    Devour!
+                                </button>
+                            </li>
+                            {{/if}}
+                            {{/each}}
+                        </ol>
                     </div>
                 </div>
             </div>
         </div>
-        {{!-- Site Burder Order & Devour Tables --}}
-        <div class="container">
-            {{!-- Site Burger Container --}}
-            <div class="row">
-                {{!-- Order Table --}}
-                <div class="col-md-6">
-                    <div class="card">
-                        <h5 class="card-header">Current Burger Orders</h5>
-                        <div class="card-body">
-                            <p class="lead">Burger Orders Appear Here.</p>
-                        </div>
-                    </div>
-                </div>
-                {{!-- Devour Table --}}
-                <div class="col-md-6">
-                    <div class="card">
-                        <h5 class="card-header">Eat-Dem-Burgers</h5>
-                        <div class="card-body">
-                            <p class="lead">This is the dining table.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
 
-        {{!-- jQuery --}}
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        {{!-- Popper JS --}}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-        {{!-- Bootstrap JS --}}
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+    {{!-- jQuery --}}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    {{!-- Popper JS --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    {{!-- Bootstrap JS --}}
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    {{!-- CRUD JS --}}
+    <script src="/assets/js/crud.js"></script>
 </body>
 
 </html>
