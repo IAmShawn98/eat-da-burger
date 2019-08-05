@@ -82,7 +82,7 @@
                             {{#unless devoured}}
                             <li class="mt-2">
                                 {{this.burger_name}}
-                                <button class="btn btn-success btn-sm p-1" id="btnPurchase" data-id="{{this.id}}"
+                                <button class="btnPurchase btn btn-success btn-sm p-1" id="btnPurchase" data-id="{{this.id}}"
                                     data-newPurchased="{{purchase}}">
                                     Purchase
                                 </button>
@@ -104,7 +104,7 @@
                             {{#if devoured}}
                             <li class="mt-2">
                                 {{this.burger_name}}
-                                <button class="btn btn-warning btn-sm p-1" id="btnPurcahse" data-id="{{this.id}}"
+                                <button class="btn btn-warning btn-sm p-1" class="btnDevour" data-id="{{this.id}}"
                                     data-newDevoured="{{devour}}">
                                     Devour!
                                 </button>

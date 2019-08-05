@@ -14,9 +14,26 @@ function createQmarks(num) {
     return arr.toString();
 }
 
+function translateSql(ob) {
+    var arr = [];
+    for (var key in ob) {
+        var value = ob[key];
+        if (Object.hasOwnProperty.call(ob, key)) {
+            if (typeof value === "string" && value.indexOf(" ") >= 0) {
+                value = "'" + value + "'";
+            }
+            arr.push(key + "=" + value);
+        }
+    }
+    return arr.toString();
+}
+
 // create our orm object.
 var orm = {
-    // * `selectAll()`.
+    // Select everything currently in the database and display it.
+    // All items are sorted by their bool value "true" or "false" (1; 0).
+    // True values are in the "Eat-Dem-Burgers" table, while false is in
+    // the "Current Burger Orders" table waiting go be devoured (removed).
     selectAll: function (table, cb) {
         // Select Database Table.
         var dbQuery = "SELECT * FROM " + table + ";";
@@ -42,6 +59,7 @@ var orm = {
             "VALUES (" +
             createQmarks(vals.length) +
             ") ";
+
         // Log the user entered data into the console.
         console.log(dbQuery);
 
@@ -55,8 +73,26 @@ var orm = {
             cb(res);
         });
     },
+    // // * `updateOne()`.
+    updateOne: function (table, objColVals, condition, cb) {
+        var dbQuery =
+            "UPDATE " +
+            table +
+            " SET " +
+            translateSql(objColVals) +
+            " WHERE " +
+            condition;
+
+        console.log(dbQuery);
+
+        connection.query(dbQuery, function (err, res) {
+            if (err) {
+                throw err;
+            }
+            cb(res);
+        });
+    },
 }
-// * `updateOne()`.
 // 'delete()'.
 
 // * Export the ORM object in `module.exports`.
