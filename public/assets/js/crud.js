@@ -3,18 +3,11 @@ $(function () {
         e.preventDefault();
 
         var newBurger = {
-            burger_name: $("#addBurger")
+            burger_name: $("#sBurger")
                 .val()
                 .trim(),
             devoured: 0
         };
-        $.ajax("/api/burgers", {
-            type: "POST",
-            data: newBurger
-        }).then(function () {
-            console.log("Added New Burger!");
-            // location.reload();
-        });
         $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger

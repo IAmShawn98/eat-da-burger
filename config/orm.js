@@ -1,6 +1,12 @@
 // Require SQL connection.
 const connection = require("./connection");
-
+function createQmarks(num) {
+    var arr = [];
+    for (var i = 0; i < num; i++) {
+      arr.push("?");
+    }
+    return arr.toString();
+  }
 var orm = {
     // * `selectAll()`.
     selectAll: function (table, cb) {
@@ -16,11 +22,25 @@ var orm = {
             cb(res);
         });
     },
-    insertOne: function (cols, vals, cb) {
-        orm.insertOne("burgers", cols, vals, function (res) {
+    insertOne: function (table, cols, vals, cb) {
+        var dbQuery =
+            "INSERT INTO " +
+            table +
+            " (" +
+            cols.toString() +
+            ") " +
+            "VALUES (" +
+            createQmarks(vals.length) +
+            ") ";
+
+        console.log(dbQuery);
+        connection.query(dbQuery, vals, function (err, res) {
+            if (err) {
+                throw err;
+            }
             cb(res);
         });
-    }
+    },
 }
 // * `updateOne()`.
 // 'delete()'.
