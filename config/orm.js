@@ -14,17 +14,18 @@ function createQmarks(num) {
     return arr.toString();
 }
 
-function translateSql(ob) {
+// Translates our true/false BOOL value from an object to a string.
+function objToStringVal(obj) {
+    // Create an ary.
     var arr = [];
-    for (var key in ob) {
-        var value = ob[key];
-        if (Object.hasOwnProperty.call(ob, key)) {
-            if (typeof value === "string" && value.indexOf(" ") >= 0) {
-                value = "'" + value + "'";
-            }
-            arr.push(key + "=" + value);
-        }
+    // Loop through it.
+    for (var key in obj) {
+        // Create var that will contain object keys of the array.
+        var value = obj[key];
+        // Push key values to the array.
+        arr.push(key + "=" + value);
     }
+    // Return the converted value from the populated array into a string.
     return arr.toString();
 }
 
@@ -73,27 +74,31 @@ var orm = {
             cb(res);
         });
     },
-    // // * `updateOne()`.
+    // Move items to the "Burgers Eaten" side if the burger has been devoured.
     updateOne: function (table, objColVals, condition, cb) {
+        // SQL statement which updates the value of false to true (from not being in an eaten state, to being in one).
         var dbQuery =
             "UPDATE " +
             table +
             " SET " +
-            translateSql(objColVals) +
+            objToStringVal(objColVals) +
             " WHERE " +
             condition;
 
+        // Log out the SQL statement for debugging.
         console.log(dbQuery);
 
+        // Put the data through a connection query.
         connection.query(dbQuery, function (err, res) {
+            // If there are errors, handle them.
             if (err) {
                 throw err;
             }
+            // Execute Response Callback.
             cb(res);
         });
     },
 }
-// 'delete()'.
 
 // * Export the ORM object in `module.exports`.
 module.exports = orm;

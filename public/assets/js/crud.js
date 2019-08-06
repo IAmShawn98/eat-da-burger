@@ -17,8 +17,8 @@ $(function () {
         });
     });
 
-    $(".btnPurchase").on("click", function (event) {
-        event.preventDefault();
+    $(".btnEatBurger").on("click", function (e) {
+        e.preventDefault();
 
         var id = $(this).data("id");
         var devouredState = {
