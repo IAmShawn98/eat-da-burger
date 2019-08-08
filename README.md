@@ -10,8 +10,4 @@ It's really that simple!
 
 Once you finish a burger, it will then be conveniently dispenced into a table called "Burgers Eaten".
 
-Sounds delicious? Click <a href="https://time-entry-portal.herokuapp.com/">here</a> to try it out! Enjoy!
-
-'Eat Da Burger' is not yet available. I am working on deployment now, try again later.
-
-Update: Because of deployment issues this project may not be online tonight. Check back tomorrow afternoon.
+Sounds delicious? Click <a href="https://burger-app-sl.herokuapp.com/">here</a> to try it out! Enjoy!
